@@ -1,0 +1,139 @@
+.App {
+  --color-blue-7: rgba(70, 147, 255, 0.7);
+  --color-blue-6: rgba(70, 147, 255, 0.6);
+  --color-blue-5: rgba(70, 147, 255, 0.5);
+  --color-blue-4: rgba(70, 147, 255, 0.4);
+  --color-blue-3: rgba(70, 147, 255, 0.3);
+  --color-blue-2: rgba(70, 147, 255, 0.2);
+  --color-blue-1: rgba(70, 147, 255, 0.1);
+  --color-gray-9: rgba(24, 24, 24, 0.9);
+  --color-gray-6: rgba(24, 24, 24, 0.6);
+  --color-gray-4: rgba(24, 24, 24, 0.4);
+  --color-gray-1: rgba(24, 24, 24, 0.1);
+  --color-green-1: rgba(61, 146, 61, 0.1);
+  --color-green-2: rgba(61, 146, 61, 0.2);
+
+  font-family: sans-serif;
+  padding: 32px;
+  color: var(--color-gray-9) !important;
+}
+
+.ant-btn,
+.ant-picker,
+.ant-select-selector {
+  border-radius: 4px !important;
+}
+
+.label-container {
+  display: flex;
+  min-width: 120px;
+  flex-direction: column;
+  width: min-content;
+}
+
+.select {
+  min-width: 200px;
+}
+
+/* Контейнер дат */
+
+.dayCardsContainer {
+  width: 1220px;
+}
+
+/* Карточка даты  Старт */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 150px;
+  height: 70px;
+  padding-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.3s;
+  border: 1px solid var(--color-gray-1);
+  overflow: hidden;
+}
+
+.card.copied:hover,
+.card:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: transparent;
+  background-color: var(--color-blue-3);
+}
+
+.card::after {
+  content: "cкопировано";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 85px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-blue-4);
+  color: white;
+  transition: all 0.3s;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  border-top-left-radius: 5px;
+}
+
+.card.isLastCopiedDate::after {
+  opacity: 1;
+}
+
+.card.copied {
+  background: var(--color-blue-2);
+  border-color: var(--color-blue-2);
+  color: var(--color-gray-6) !important;
+}
+
+.card .card-date {
+  font-size: 13px;
+  color: var(--color-gray-6);
+}
+
+.card.isPastDay,
+.card.pastDay .card-date {
+  color: var(--color-gray-4);
+}
+
+.card .isToday {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid var(--color-blue-7);
+  border-right: 20px solid transparent;
+}
+
+.card.isWeekend {
+  cursor: not-allowed;
+  background: var(--color-green-1);
+  border: 1px solid var(--color-green-2);
+  box-shadow: none;
+}
+
+.card.isLastCopiedDate {
+  /* animation: lastCopied 1s linear alternate infinite; */
+}
+
+@keyframes lastCopied {
+  from {
+    background: var(--color-blue-4);
+  }
+  to {
+    background: var(--color-blue-5);
+  }
+}
+
+/* Карточка даты  Конец */
